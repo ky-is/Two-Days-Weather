@@ -13,6 +13,7 @@
 		249F10D523AE86F20051BC4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F10D423AE86F20051BC4F /* ViewController.swift */; };
 		249F10DA23AE86F30051BC4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249F10D923AE86F30051BC4F /* Assets.xcassets */; };
 		249F10DD23AE86F30051BC4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249F10DB23AE86F30051BC4F /* LaunchScreen.storyboard */; };
+		249F10E523AE8DA20051BC4F /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F10E423AE8DA20051BC4F /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		249F10D923AE86F30051BC4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		249F10DC23AE86F30051BC4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		249F10DE23AE86F30051BC4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		249F10E423AE8DA20051BC4F /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		60C36A91D8ED8802C30FEE41 /* Pods-Two Days Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Two Days Weather.release.xcconfig"; path = "Target Support Files/Pods-Two Days Weather/Pods-Two Days Weather.release.xcconfig"; sourceTree = "<group>"; };
 		9582F2240C673D91EB235838 /* Pods-Two Days Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Two Days Weather.debug.xcconfig"; path = "Target Support Files/Pods-Two Days Weather/Pods-Two Days Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E9678AB97130FC62353DF8 /* Pods_Two_Days_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Two_Days_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				249F10E723AE8E610051BC4F /* Controllers */,
+				249F10E623AE8E5C0051BC4F /* Models */,
 				249F10D023AE86F20051BC4F /* AppDelegate.swift */,
 				249F10D223AE86F20051BC4F /* SceneDelegate.swift */,
 				249F10D923AE86F30051BC4F /* Assets.xcassets */,
@@ -69,6 +72,14 @@
 				249F10DE23AE86F30051BC4F /* Info.plist */,
 			);
 			path = "Two Days Weather";
+			sourceTree = "<group>";
+		};
+		249F10E623AE8E5C0051BC4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				249F10E423AE8DA20051BC4F /* DataModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		249F10E723AE8E610051BC4F /* Controllers */ = {
@@ -211,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				249F10D523AE86F20051BC4F /* ViewController.swift in Sources */,
+				249F10E523AE8DA20051BC4F /* DataModel.swift in Sources */,
 				249F10D123AE86F20051BC4F /* AppDelegate.swift in Sources */,
 				249F10D323AE86F20051BC4F /* SceneDelegate.swift in Sources */,
 			);
