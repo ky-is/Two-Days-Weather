@@ -26,7 +26,9 @@ extension ViewController: CLLocationManagerDelegate {
 		guard let latestLocation = locations.last else {
 			return
 		}
-		print(latestLocation)
+		OpenWeather.forecast(at: latestLocation) { data in
+			print(data)
+		}
 	}
 
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
