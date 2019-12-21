@@ -5,7 +5,7 @@ final class ViewController: UIViewController {
 
 	private let locationManager = CLLocationManager()
 
-	private let pageViewController = ForecastPageViewController()
+	private let pageViewController = ForecastPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
