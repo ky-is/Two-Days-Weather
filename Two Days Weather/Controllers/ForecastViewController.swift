@@ -19,6 +19,7 @@ final class ForecastViewController: UIViewController {
 
 	let titleLabel = UILabel()
 	let temperatureLabel = UILabel()
+	let dateLabel = UILabel()
 
 	private var forecast: OpenWeatherForecast?
 
@@ -30,14 +31,24 @@ final class ForecastViewController: UIViewController {
 		return measurementFormatter
 	}()
 
+	let dateFormatter: DateFormatter = {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = .short
+		dateFormatter.timeStyle = .short
+		return dateFormatter
+	}()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
 		titleLabel.textColor = .secondaryLabel
 		temperatureLabel.font = UIFont.monospacedDigitSystemFont(ofSize: temperatureFontSize, weight: .bold)
 		temperatureLabel.textColor = .label
+		dateLabel.font = UIFont.preferredFont(forTextStyle: .body)
+		dateLabel.textColor = .tertiaryLabel
 		view.addSubview(titleLabel)
 		view.addSubview(temperatureLabel)
+		view.addSubview(dateLabel)
 
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -45,6 +56,9 @@ final class ForecastViewController: UIViewController {
 		temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
 		temperatureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		temperatureLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+		dateLabel.translatesAutoresizingMaskIntoConstraints = false
+		dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		dateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: temperatureFontSize * 2).isActive = true
 
 		update(forecast: forecast)
 	}
@@ -53,11 +67,20 @@ final class ForecastViewController: UIViewController {
 		self.forecast = forecast
 		titleLabel.text = forecast?.cityName
 		temperatureLabel.text = forecast != nil ? convert(temperature: forecast!.temperature) : "…"
+		let date = forecast != nil ? Date(timeIntervalSince1970: forecast!.time) : nil
+		dateLabel.text = format(date: date)
 	}
 
 	private func convert(temperature: Double) -> String {
 		let input = Measurement(value: temperature, unit: UnitTemperature.kelvin)
 		return measurementFormatter.string(from: input)
+	}
+
+	private func format(date: Date?) -> String {
+		guard let date = date else {
+			return ""
+		}
+		return dateFormatter.string(from: date)
 	}
 
 }
