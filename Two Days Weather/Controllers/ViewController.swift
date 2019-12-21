@@ -5,13 +5,16 @@ final class ViewController: UIViewController {
 
 	private let locationManager = CLLocationManager()
 
-	var forecast: TodayAndTomorrowsForecast?
+	private let pageViewController = ForecastPageViewController()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
 		locationManager.delegate = self
 		locationManager.startMonitoringSignificantLocationChanges()
+		addChild(pageViewController)
+		pageViewController.didMove(toParent: self)
+		view.addSubview(pageViewController.view)
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -28,8 +31,8 @@ extension ViewController: CLLocationManagerDelegate {
 		guard let latestLocation = locations.last else {
 			return
 		}
-		if let forecast = DataModel.shared.getCachedForecast(at: latestLocation) {
-			self.forecast = forecast
+		if let forecasts = DataModel.shared.getCachedForecast(at: latestLocation) {
+			pageViewController.update(forecasts: forecasts)
 			return
 		}
 		OpenWeather.forecast(at: latestLocation) { forecast in
@@ -39,7 +42,7 @@ extension ViewController: CLLocationManagerDelegate {
 			}
 			let today = OpenWeatherForecast(cityName: forecast.cityName, temperature: todayEntry.temperature, time: todayEntry.time)
 			let tomorrow = OpenWeatherForecast(cityName: forecast.cityName, temperature: tomorrowEntry.temperature, time: tomorrowEntry.time)
-			self.forecast = TodayAndTomorrowsForecast(today: today, tomorrow: tomorrow)
+			self.pageViewController.update(forecasts: TodayAndTomorrowsForecast(today: today, tomorrow: tomorrow))
 			DataModel.shared.save(location: latestLocation, forecast: forecast)
 		}
 	}
