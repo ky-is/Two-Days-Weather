@@ -9,6 +9,7 @@ final class ViewController: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
 		locationManager.delegate = self
+		locationManager.startMonitoringSignificantLocationChanges()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -20,6 +21,19 @@ final class ViewController: UIViewController {
 //MARK: - CLLocationManagerDelegate
 
 extension ViewController: CLLocationManagerDelegate {
+
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		guard let latestLocation = locations.last else {
+			return
+		}
+		print(latestLocation)
+	}
+
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		print("locationManager didFailWithError", error.localizedDescription)
+	}
+
+	//MARK: Authorization
 
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		checkLocationAccess(authorization: status)
