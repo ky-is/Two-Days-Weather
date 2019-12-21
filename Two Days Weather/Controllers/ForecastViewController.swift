@@ -1,5 +1,20 @@
 import UIKit
 
+final class ForecastNavigationViewController: UINavigationController {
+	let forecastViewController = ForecastViewController()
+
+	init(title: String) {
+		forecastViewController.title = title
+		super.init(rootViewController: forecastViewController)
+		navigationBar.prefersLargeTitles = true
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+}
+
 final class ForecastViewController: UIViewController {
 
 	let titleLabel = UILabel()

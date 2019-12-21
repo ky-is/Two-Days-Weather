@@ -2,7 +2,7 @@ import UIKit
 
 final class ForecastPageViewController: UIPageViewController {
 
-	private let forecastViewControllers = [ForecastViewController(), ForecastViewController()]
+	private let forecastViewControllers = [ForecastNavigationViewController(title: "Today"), ForecastNavigationViewController(title: "Tomorrow")]
 
 	private let pageControl = UIPageControl()
 
@@ -24,8 +24,8 @@ final class ForecastPageViewController: UIPageViewController {
 	}
 
 	func update(forecasts: TodayAndTomorrowsForecast) {
-		forecastViewControllers[0].update(forecast: forecasts.today)
-		forecastViewControllers[1].update(forecast: forecasts.tomorrow)
+		forecastViewControllers[0].forecastViewController.update(forecast: forecasts.today)
+		forecastViewControllers[1].forecastViewController.update(forecast: forecasts.tomorrow)
 	}
 
 }
@@ -47,7 +47,7 @@ extension ForecastPageViewController: UIPageViewControllerDelegate {
 extension ForecastPageViewController: UIPageViewControllerDataSource {
 
 	private func getIndex(of viewController: UIViewController) -> Int? {
-		guard let viewController = viewController as? ForecastViewController else {
+		guard let viewController = viewController as? ForecastNavigationViewController else {
 			return nil
 		}
 		return forecastViewControllers.firstIndex(of: viewController)
