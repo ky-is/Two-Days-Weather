@@ -7,6 +7,8 @@ final class ViewController: UIViewController {
 
 	private let pageViewController = ForecastPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
 
+	private var hasCheckedLocation = false
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
@@ -21,6 +23,12 @@ final class ViewController: UIViewController {
 		checkLocationAccess(authorization: CLLocationManager.authorizationStatus())
 	}
 
+	func checkLocation() {
+		if hasCheckedLocation {
+			locationManager.requestLocation()
+		}
+	}
+
 }
 
 //MARK: - CLLocationManagerDelegate
@@ -31,6 +39,7 @@ extension ViewController: CLLocationManagerDelegate {
 		guard let latestLocation = locations.last else {
 			return
 		}
+		hasCheckedLocation = true
 		if let forecasts = DataModel.shared.getCachedForecast(at: latestLocation) {
 			pageViewController.update(forecasts: forecasts)
 			return

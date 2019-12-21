@@ -14,4 +14,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		self.window = window
 	}
 
+	func sceneWillEnterForeground(_ scene: UIScene) {
+		if let viewController = window?.rootViewController as? ViewController {
+			viewController.checkLocation()
+		}
+	}
+
 }
