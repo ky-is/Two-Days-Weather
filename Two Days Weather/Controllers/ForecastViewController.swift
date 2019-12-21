@@ -58,7 +58,7 @@ final class ForecastViewController: UIViewController {
 		temperatureLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
 		dateLabel.translatesAutoresizingMaskIntoConstraints = false
 		dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		dateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: temperatureFontSize * 2).isActive = true
+		dateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 96).isActive = true
 
 		update(forecast: forecast)
 	}
