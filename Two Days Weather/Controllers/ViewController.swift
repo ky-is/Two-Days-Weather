@@ -42,7 +42,9 @@ extension ViewController: CLLocationManagerDelegate {
 			}
 			let today = OpenWeatherForecast(cityName: forecast.cityName, temperature: todayEntry.temperature, time: todayEntry.time)
 			let tomorrow = OpenWeatherForecast(cityName: forecast.cityName, temperature: tomorrowEntry.temperature, time: tomorrowEntry.time)
-			self.pageViewController.update(forecasts: TodayAndTomorrowsForecast(today: today, tomorrow: tomorrow))
+			DispatchQueue.main.async {
+				self.pageViewController.update(forecasts: TodayAndTomorrowsForecast(today: today, tomorrow: tomorrow))
+			}
 			DataModel.shared.save(location: latestLocation, forecast: forecast)
 		}
 	}
