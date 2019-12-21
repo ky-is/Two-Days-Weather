@@ -12,8 +12,8 @@ final class ForecastPageViewController: UIPageViewController {
 		delegate = self
 		setViewControllers([forecastViewControllers[0]], direction: .forward, animated: false)
 
-		pageControl.currentPageIndicatorTintColor = .white
-		pageControl.pageIndicatorTintColor = .lightGray
+		pageControl.currentPageIndicatorTintColor = .label
+		pageControl.pageIndicatorTintColor = .secondaryLabel
 		pageControl.numberOfPages = forecastViewControllers.count
 		pageControl.currentPage = 0
 		view.addSubview(pageControl)
