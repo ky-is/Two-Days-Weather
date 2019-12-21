@@ -7,16 +7,26 @@ final class ForecastViewController: UIViewController {
 
 	private var forecast: OpenWeatherForecast?
 
+	private let temperatureFontSize: CGFloat = 64
+
+	let measurementFormatter: MeasurementFormatter = {
+		let measurementFormatter = MeasurementFormatter()
+		measurementFormatter.numberFormatter.maximumFractionDigits = 1
+		return measurementFormatter
+	}()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-		temperatureLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+		titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+		titleLabel.textColor = .secondaryLabel
+		temperatureLabel.font = UIFont.monospacedDigitSystemFont(ofSize: temperatureFontSize, weight: .bold)
+		temperatureLabel.textColor = .label
 		view.addSubview(titleLabel)
 		view.addSubview(temperatureLabel)
 
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -64).isActive = true
+		titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -temperatureFontSize).isActive = true
 		temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
 		temperatureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		temperatureLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
@@ -27,7 +37,12 @@ final class ForecastViewController: UIViewController {
 	func update(forecast: OpenWeatherForecast?) {
 		self.forecast = forecast
 		titleLabel.text = forecast?.cityName
-		temperatureLabel.text = "\(forecast?.temperature.description ?? "?")°" // ℃℉
+		temperatureLabel.text = forecast != nil ? convert(temperature: forecast!.temperature) : "…"
+	}
+
+	private func convert(temperature: Double) -> String {
+		let input = Measurement(value: temperature, unit: UnitTemperature.kelvin)
+		return measurementFormatter.string(from: input)
 	}
 
 }
