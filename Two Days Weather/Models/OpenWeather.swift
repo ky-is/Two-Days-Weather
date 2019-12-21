@@ -1,7 +1,28 @@
+import CouchbaseLiteSwift
 import CoreLocation
 import Foundation
 
-struct OpenWeatherForecastEntry {
+typealias TodayAndTomorrowsForecast = (today: OpenWeatherForecast, tomorrow: OpenWeatherForecast)
+
+struct OpenWeatherForecast {
+	let cityName: String
+	let temperature: Double
+	let time: TimeInterval
+
+	init(cityName: String, temperature: Double, time: TimeInterval) {
+		self.cityName = cityName
+		self.temperature = temperature
+		self.time = time
+	}
+
+	init(queryResult: ResultSet.Element) {
+		self.cityName = queryResult.string(forKey: "cityName") ?? "??"
+		self.temperature = queryResult.double(forKey: "temperature")
+		self.time = queryResult.double(forKey: "time")
+	}
+}
+
+struct OpenWeatherForecastDataEntry {
 	let time: TimeInterval
 	let temperature: Double
 
@@ -19,10 +40,10 @@ struct OpenWeatherForecastEntry {
 	}
 }
 
-struct OpenWeatherForecast {
+struct OpenWeatherForecastData {
 	let cityID: Int
 	let cityName: String
-	let entries: [OpenWeatherForecastEntry]
+	let entries: [OpenWeatherForecastDataEntry]
 
 	init?(json: [String: Any]) {
 		guard let cityObject = json["city"] as? [String: Any], let forecastEntries = json["list"] as? [[String: Any]] else {
@@ -35,7 +56,7 @@ struct OpenWeatherForecast {
 		}
 		self.cityID = cityID
 		self.cityName = cityName
-		self.entries = forecastEntries.compactMap { OpenWeatherForecastEntry(json: $0) }
+		self.entries = forecastEntries.compactMap { OpenWeatherForecastDataEntry(json: $0) }
 	}
 }
 
@@ -43,7 +64,7 @@ final class OpenWeather {
 
 	private static let baseURL = "https://api.openweathermap.org/data/2.5/forecast?APPID=\(openWeatherMapAPIKey)"
 
-	static func forecast(at location: CLLocation, callback: @escaping (OpenWeatherForecast) -> Void) {
+	static func forecast(at location: CLLocation, callback: @escaping (OpenWeatherForecastData) -> Void) {
 		let urlString = "\(baseURL)&lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)"
 		guard let url = URL(string: urlString) else {
 			return print("Invalid url", urlString)
@@ -56,7 +77,7 @@ final class OpenWeather {
 				return print("Invalid data", url, response ?? "nil")
 			}
 			do {
-				if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let weatherData = OpenWeatherForecast(json: json) {
+				if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let weatherData = OpenWeatherForecastData(json: json) {
 					callback(weatherData)
 				}
 			} catch {

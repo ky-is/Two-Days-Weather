@@ -5,6 +5,8 @@ final class ViewController: UIViewController {
 
 	private let locationManager = CLLocationManager()
 
+	var forecast: TodayAndTomorrowsForecast?
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
@@ -26,8 +28,19 @@ extension ViewController: CLLocationManagerDelegate {
 		guard let latestLocation = locations.last else {
 			return
 		}
-		OpenWeather.forecast(at: latestLocation) { data in
-			print(data)
+		if let forecast = DataModel.shared.getCachedForecast(at: latestLocation) {
+			self.forecast = forecast
+			return
+		}
+		OpenWeather.forecast(at: latestLocation) { forecast in
+			let currentTimestamp = Date().timeIntervalSince1970
+			guard let todayEntry = forecast.entries.first, let tomorrowEntry = forecast.entries.first(where: { isTomorrow(timestamp: $0.time, currentTimestamp: currentTimestamp) }) else {
+				return print("Could not find valid today/tomorrow in", forecast.entries)
+			}
+			let today = OpenWeatherForecast(cityName: forecast.cityName, temperature: todayEntry.temperature, time: todayEntry.time)
+			let tomorrow = OpenWeatherForecast(cityName: forecast.cityName, temperature: tomorrowEntry.temperature, time: tomorrowEntry.time)
+			self.forecast = TodayAndTomorrowsForecast(today: today, tomorrow: tomorrow)
+			DataModel.shared.save(location: latestLocation, forecast: forecast)
 		}
 	}
 
