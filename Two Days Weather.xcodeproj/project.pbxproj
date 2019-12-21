@@ -61,14 +61,22 @@
 		249F10CF23AE86F20051BC4F /* Two Days Weather */ = {
 			isa = PBXGroup;
 			children = (
+				249F10E723AE8E610051BC4F /* Controllers */,
 				249F10D023AE86F20051BC4F /* AppDelegate.swift */,
 				249F10D223AE86F20051BC4F /* SceneDelegate.swift */,
-				249F10D423AE86F20051BC4F /* ViewController.swift */,
 				249F10D923AE86F30051BC4F /* Assets.xcassets */,
 				249F10DB23AE86F30051BC4F /* LaunchScreen.storyboard */,
 				249F10DE23AE86F30051BC4F /* Info.plist */,
 			);
 			path = "Two Days Weather";
+			sourceTree = "<group>";
+		};
+		249F10E723AE8E610051BC4F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				249F10D423AE86F20051BC4F /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		33E2697BA7D607344238EC2C /* Frameworks */ = {
@@ -85,7 +93,6 @@
 				9582F2240C673D91EB235838 /* Pods-Two Days Weather.debug.xcconfig */,
 				60C36A91D8ED8802C30FEE41 /* Pods-Two Days Weather.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
