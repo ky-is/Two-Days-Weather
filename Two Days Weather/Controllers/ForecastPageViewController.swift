@@ -21,6 +21,8 @@ final class ForecastPageViewController: UIPageViewController {
 		pageControl.translatesAutoresizingMaskIntoConstraints = false
 		pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+		let dotScale: CGFloat = 1.75
+		pageControl.transform = CGAffineTransform(scaleX: dotScale, y: dotScale)
 	}
 
 	func update(forecasts: TodayAndTomorrowsForecast) {
