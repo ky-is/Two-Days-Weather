@@ -75,7 +75,7 @@ final class DataModel {
 		])
 		do {
 			try database.saveDocument(document)
-			try database.setDocumentExpiration(withID: lastLocationID, expiration: Calendar.current.date(byAdding: .day, value: 5, to: Date()))
+			try database.setDocumentExpiration(withID: lastLocationID, expiration: Calendar.current.date(byAdding: .day, value: 1, to: Date()))
 		} catch {
 			print(error.localizedDescription, location)
 		}
