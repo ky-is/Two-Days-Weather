@@ -35,7 +35,7 @@
 		249F10DC23AE86F30051BC4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		249F10DE23AE86F30051BC4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		249F10E423AE8DA20051BC4F /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		24FB126F23AE985E00EE8A1E /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		24FB126F23AE985E00EE8A1E /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Secrets.swift; path = ../Secrets.swift; sourceTree = "<group>"; };
 		24FB127223AE9CEC00EE8A1E /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
 		60C36A91D8ED8802C30FEE41 /* Pods-Two Days Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Two Days Weather.release.xcconfig"; path = "Target Support Files/Pods-Two Days Weather/Pods-Two Days Weather.release.xcconfig"; sourceTree = "<group>"; };
 		9582F2240C673D91EB235838 /* Pods-Two Days Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Two Days Weather.debug.xcconfig"; path = "Target Support Files/Pods-Two Days Weather/Pods-Two Days Weather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -54,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2431E62B23AF00B900B3BDF1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2431E62923AEFDA400B3BDF1 /* Extensions.swift */,
+				24FB126F23AE985E00EE8A1E /* Secrets.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		249F10C423AE86F20051BC4F = {
 			isa = PBXGroup;
 			children = (
@@ -78,13 +87,12 @@
 			children = (
 				249F10E723AE8E610051BC4F /* Controllers */,
 				249F10E623AE8E5C0051BC4F /* Models */,
+				2431E62B23AF00B900B3BDF1 /* Helpers */,
 				249F10D023AE86F20051BC4F /* AppDelegate.swift */,
 				249F10D223AE86F20051BC4F /* SceneDelegate.swift */,
 				249F10D923AE86F30051BC4F /* Assets.xcassets */,
 				249F10DB23AE86F30051BC4F /* LaunchScreen.storyboard */,
 				249F10DE23AE86F30051BC4F /* Info.plist */,
-				24FB126F23AE985E00EE8A1E /* Secrets.swift */,
-				2431E62923AEFDA400B3BDF1 /* Extensions.swift */,
 			);
 			path = "Two Days Weather";
 			sourceTree = "<group>";
