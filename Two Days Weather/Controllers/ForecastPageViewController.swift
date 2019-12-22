@@ -38,7 +38,9 @@ extension ForecastPageViewController: UIPageViewControllerDelegate {
 
 	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
 		if let viewController = viewControllers?.first, let index = getIndex(of: viewController) {
-			pageControl.currentPage = index
+			UIView.animate(withDuration: 0.15) {
+				self.pageControl.currentPage = index
+			}
 		}
 	}
 
