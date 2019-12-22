@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1746076D9D140C1BAFB31052 /* Pods_Two_Days_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9678AB97130FC62353DF8 /* Pods_Two_Days_Weather.framework */; };
+		2431E62A23AEFDA400B3BDF1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431E62923AEFDA400B3BDF1 /* Extensions.swift */; };
 		249F0BF323AEBD55003F5280 /* ForecastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F0BF223AEBD55003F5280 /* ForecastPageViewController.swift */; };
 		249F0BF523AEBDD2003F5280 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F0BF423AEBDD2003F5280 /* ForecastViewController.swift */; };
 		249F10D123AE86F20051BC4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F10D023AE86F20051BC4F /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2431E62923AEFDA400B3BDF1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		249F0BF223AEBD55003F5280 /* ForecastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPageViewController.swift; sourceTree = "<group>"; };
 		249F0BF423AEBDD2003F5280 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		249F10CD23AE86F20051BC4F /* Two Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Two Days.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 				249F10DB23AE86F30051BC4F /* LaunchScreen.storyboard */,
 				249F10DE23AE86F30051BC4F /* Info.plist */,
 				24FB126F23AE985E00EE8A1E /* Secrets.swift */,
+				2431E62923AEFDA400B3BDF1 /* Extensions.swift */,
 			);
 			path = "Two Days Weather";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				249F0BF323AEBD55003F5280 /* ForecastPageViewController.swift in Sources */,
+				2431E62A23AEFDA400B3BDF1 /* Extensions.swift in Sources */,
 				249F10D523AE86F20051BC4F /* ViewController.swift in Sources */,
 				24FB127023AE985E00EE8A1E /* Secrets.swift in Sources */,
 				249F10E523AE8DA20051BC4F /* DataModel.swift in Sources */,

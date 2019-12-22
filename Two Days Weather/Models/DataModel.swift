@@ -1,10 +1,8 @@
 import CouchbaseLiteSwift
 import CoreLocation
 
-private let secondsInDay: TimeInterval = 24 * 60 * 60
-
 func isTomorrow(timestamp: TimeInterval, currentTimestamp: TimeInterval) -> Bool {
-	return currentTimestamp + secondsInDay <= timestamp
+	return currentTimestamp + .day <= timestamp
 }
 
 final class DataModel {
@@ -86,7 +84,7 @@ final class DataModel {
 						"temperature": entry.temperature,
 					])
 					try database.saveDocument(document)
-					try database.setDocumentExpiration(withID: entryID, expiration: Date(timeIntervalSince1970: timestamp + 5 * secondsInDay))
+					try database.setDocumentExpiration(withID: entryID, expiration: Date(timeIntervalSince1970: timestamp + 5 * .day))
 				}
 			}
 		} catch {
