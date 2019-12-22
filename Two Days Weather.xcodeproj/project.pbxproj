@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1746076D9D140C1BAFB31052 /* Pods_Two_Days_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9678AB97130FC62353DF8 /* Pods_Two_Days_Weather.framework */; };
+		2431E62823AEFB1B00B3BDF1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2431E62723AEFB1B00B3BDF1 /* README.md */; };
 		2431E62A23AEFDA400B3BDF1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431E62923AEFDA400B3BDF1 /* Extensions.swift */; };
 		249F0BF323AEBD55003F5280 /* ForecastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F0BF223AEBD55003F5280 /* ForecastPageViewController.swift */; };
 		249F0BF523AEBDD2003F5280 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249F0BF423AEBDD2003F5280 /* ForecastViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2431E62723AEFB1B00B3BDF1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2431E62923AEFDA400B3BDF1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		249F0BF223AEBD55003F5280 /* ForecastPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPageViewController.swift; sourceTree = "<group>"; };
 		249F0BF423AEBDD2003F5280 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		249F10C423AE86F20051BC4F = {
 			isa = PBXGroup;
 			children = (
+				2431E62723AEFB1B00B3BDF1 /* README.md */,
 				249F10CF23AE86F20051BC4F /* Two Days Weather */,
 				249F10CE23AE86F20051BC4F /* Products */,
 				DFF0389DCDCE38BE4ACF2569 /* Pods */,
@@ -182,6 +185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2431E62823AEFB1B00B3BDF1 /* README.md in Resources */,
 				249F10DD23AE86F30051BC4F /* LaunchScreen.storyboard in Resources */,
 				249F10DA23AE86F30051BC4F /* Assets.xcassets in Resources */,
 			);
