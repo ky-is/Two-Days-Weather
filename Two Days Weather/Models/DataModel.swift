@@ -69,18 +69,14 @@ final class DataModel {
 	}
 
 	func save(location: CLLocation, forecast: OpenWeatherForecastData) {
-		let document = MutableDocument(id: lastLocationID, data: [
-			latitudeKey: location.coordinate.latitude,
-			longitudeKey: location.coordinate.longitude,
-		])
-		do {
-			try database.saveDocument(document)
-			try database.setDocumentExpiration(withID: lastLocationID, expiration: Calendar.current.date(byAdding: .day, value: 1, to: Date()))
-		} catch {
-			print(error.localizedDescription, location)
-		}
 		do {
 			try database.inBatch {
+				let document = MutableDocument(id: lastLocationID, data: [
+					latitudeKey: location.coordinate.latitude,
+					longitudeKey: location.coordinate.longitude,
+				])
+				try database.saveDocument(document)
+				try database.setDocumentExpiration(withID: lastLocationID, expiration: Calendar.current.date(byAdding: .day, value: 1, to: Date()))
 				for entry in forecast.entries {
 					let timestamp = entry.time
 					let entryID = Int(timestamp).description
