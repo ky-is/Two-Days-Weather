@@ -19,6 +19,7 @@ final class ForecastViewController: UIViewController {
 
 	let titleLabel = UILabel()
 	let temperatureLabel = UILabel()
+	let temperatureContextLabel = UILabel()
 	let dateLabel = UILabel()
 
 	private var forecast: OpenWeatherForecast?
@@ -38,27 +39,40 @@ final class ForecastViewController: UIViewController {
 		return dateFormatter
 	}()
 
+	let timeFormatter: DateFormatter = {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = .none
+		dateFormatter.timeStyle = .short
+		return dateFormatter
+	}()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
 		titleLabel.textColor = .secondaryLabel
 		temperatureLabel.font = UIFont.monospacedDigitSystemFont(ofSize: temperatureFontSize, weight: .bold)
 		temperatureLabel.textColor = .label
+		temperatureContextLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+		temperatureContextLabel.textColor = .secondaryLabel
 		dateLabel.font = UIFont.preferredFont(forTextStyle: .body)
 		dateLabel.textColor = .tertiaryLabel
 		view.addSubview(titleLabel)
 		view.addSubview(temperatureLabel)
+		view.addSubview(temperatureContextLabel)
 		view.addSubview(dateLabel)
 
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -temperatureFontSize).isActive = true
+		titleLabel.bottomAnchor.constraint(equalTo: view.centerYAnchor, constant: -temperatureFontSize * 2/3).isActive = true
 		temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
 		temperatureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		temperatureLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+		temperatureContextLabel.translatesAutoresizingMaskIntoConstraints = false
+		temperatureContextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		temperatureContextLabel.topAnchor.constraint(equalTo: view.centerYAnchor, constant: temperatureFontSize * 2/3).isActive = true
 		dateLabel.translatesAutoresizingMaskIntoConstraints = false
 		dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		dateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 96).isActive = true
+		dateLabel.topAnchor.constraint(equalTo: view.centerYAnchor, constant: temperatureFontSize + 8).isActive = true
 
 		update(forecast: forecast)
 	}
@@ -68,6 +82,7 @@ final class ForecastViewController: UIViewController {
 		titleLabel.text = forecast?.cityName
 		temperatureLabel.text = forecast != nil ? convert(temperature: forecast!.temperature) : "…"
 		let date = forecast != nil ? Date(timeIntervalSince1970: forecast!.time) : nil
+		temperatureContextLabel.text = date != nil ? (abs(date!.timeIntervalSinceNow) > 2 * .hour ? "at \(timeFormatter.string(from: date!))" : "currently") : ""
 		dateLabel.text = format(date: date)
 	}
 
