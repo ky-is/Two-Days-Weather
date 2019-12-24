@@ -2,6 +2,14 @@
 
 ![Weather App Icon](Two%20Days%20Weather/Assets.xcassets/icon.imageset/icon.png)
 
+## Local development
+
+Two Days Weather uses [Open Weather Map's forecast API](https://openweathermap.org/forecast5). Sign up for a free API key and add `Secrets.swift` with:
+
+```swift
+let openWeatherMapAPIKey = "YOUR_API_KEY"
+```
+
 ## Dev notes
 
 ### UI
